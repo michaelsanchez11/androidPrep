@@ -1,5 +1,4 @@
 package com.example.michaelsanchez.testapp.cityName;
-
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 

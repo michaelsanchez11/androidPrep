@@ -1,7 +1,6 @@
 package com.example.michaelsanchez.testapp.home;
 
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.michaelsanchez.testapp.R;
 
@@ -10,7 +9,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Layout for the {@link MainActivity} .
+ * Layout for the {@link MainActivity}.
+ * Layout is in charge of how things are displayed in the activity.
  */
 
 public class MainLayout {
