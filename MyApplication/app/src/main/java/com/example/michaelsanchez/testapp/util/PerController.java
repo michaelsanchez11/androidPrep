@@ -1,13 +1,11 @@
 package com.example.michaelsanchez.testapp.util;
-
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-
 import javax.inject.Scope;
 
 /**
- * Created by michaelsanchez on 3/25/17.
+ * We want this to be done at runtime.
  */
 
 //Only initialize this class at runtime

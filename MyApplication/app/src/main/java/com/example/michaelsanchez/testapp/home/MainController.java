@@ -1,13 +1,15 @@
 package com.example.michaelsanchez.testapp.home;
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import com.example.michaelsanchez.testapp.WeatherApp;
 import com.example.michaelsanchez.testapp.cityName.CityNameActivity;
+import com.example.michaelsanchez.testapp.network.component.NetComponent;
 import com.example.michaelsanchez.testapp.util.PerController;
-
 import javax.inject.Inject;
-
 import dagger.Component;
 import dagger.Module;
 import dagger.Provides;
+import retrofit2.Retrofit;
 
 /**
  * Controller for {@link MainActivity}.
@@ -18,13 +20,19 @@ public class MainController implements MainLayout.MainLayoutListener{
 
     private MainActivity mMainActivity;
     @Inject MainLayout mMainLayout; // this replaces the private MainLayout mMainLayout line.
+    @Inject Retrofit mRetrofit;
 
-    public MainController(MainActivity mainActivity, MainLayout.MainLayoutListener listener) {
+    public MainController(@NonNull MainActivity mainActivity) {
+        // when we use @nonNull, we state that this param will never be null.
         mMainActivity = mainActivity;
 
-        // this is the call to connect the whole dagger Module, Provides things together and creates the things we want.
+        // this is the call to connect the whole dagger Module,
+        // Provides things together and creates the things we want.
+        //// we use (this) on .mainController... because MainController implements the listener,
+        /// therefore MainController is a listener too.
         DaggerMainController_MainControllerComponent.builder()
-                .mainControllerModule(new MainControllerModule(mMainActivity,this)) // we use (this) because MainController implements the listener, therefore MainController is a listener too.
+                .netComponent(((WeatherApp) mMainActivity.getApplicationContext()).getNetComponent())
+                .mainControllerModule(new MainControllerModule(mMainActivity,this))
                 .build()
                 .inject(this);
     }
@@ -42,15 +50,16 @@ public class MainController implements MainLayout.MainLayoutListener{
     // this maps MainController module to this component.
 
     @PerController
-    @Component(modules = MainControllerModule.class)
+    @Component(dependencies = NetComponent.class, modules = MainControllerModule.class)
+            // dependencies = components, modules = module
     interface MainControllerComponent{
         void inject(MainController mainController);
     }
 
     @Module // Creator of things in Dagger.
     static class MainControllerModule{
-        private MainActivity mMainActivity;
-        private MainLayout.MainLayoutListener mMainLayoutListener;
+        private final MainActivity mMainActivity;
+        private final MainLayout.MainLayoutListener mMainLayoutListener;
 
         public MainControllerModule(MainActivity activity,MainLayout.MainLayoutListener listener){
             mMainActivity = activity;

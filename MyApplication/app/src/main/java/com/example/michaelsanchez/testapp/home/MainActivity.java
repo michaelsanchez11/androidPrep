@@ -9,6 +9,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mMainController = new MainController(this, mMainController); // initializes the main controller
+        mMainController = new MainController(this); // initializes the main controller
     }
 }
