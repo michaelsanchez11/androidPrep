@@ -6,9 +6,11 @@ import com.example.michaelsanchez.testapp.R;
 
 public class CityNameActivity extends AppCompatActivity {
 
+    private CityNameController mCityNameController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_city_name);
+        mCityNameController = new CityNameController(this);
     }
 }

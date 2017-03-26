@@ -19,7 +19,7 @@ public class WeatherApp extends Application {
 
         mNetComponent = DaggerNetComponent.builder()
                 .appModule(new AppModule(this))
-                .netModule(new NetModule("http://api.openweathermap.org/data/2.5/"))
+                .netModule(new NetModule("http://api.openweathermap.org/"))
                 .build();
     }
 
