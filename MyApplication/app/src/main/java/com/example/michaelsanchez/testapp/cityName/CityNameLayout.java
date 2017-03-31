@@ -2,8 +2,8 @@ package com.example.michaelsanchez.testapp.cityName;
 
 import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.michaelsanchez.testapp.R;
 import com.example.michaelsanchez.testapp.data.weatherData.Weather;
 
@@ -21,6 +21,8 @@ public class CityNameLayout extends Subscriber <Weather> {
     private CityNameLayoutListener mListener;
 
     @BindView(R.id.city_name_submit) Button submitButton;
+    @BindView(R.id.city_name_input)
+    EditText cityName;
 
     public CityNameLayout(CityNameActivity cityNameActivity, CityNameLayoutListener listener) {
         mCityNameActivity = cityNameActivity;
@@ -31,7 +33,8 @@ public class CityNameLayout extends Subscriber <Weather> {
 
     @OnClick(R.id.city_name_submit)
     void onSubmitButtonClicked() {
-        mListener.onSubmitButtonClicked();
+        mListener.onSubmitButtonClicked(cityName.getText().toString());
+
     }
 
     @Override
@@ -49,6 +52,6 @@ public class CityNameLayout extends Subscriber <Weather> {
     }
 
     interface CityNameLayoutListener {
-        void onSubmitButtonClicked();
+        void onSubmitButtonClicked(String city);
     }
 }

@@ -45,8 +45,8 @@ public class CityNameController implements CityNameLayout.CityNameLayoutListener
     }
 
     @Override
-    public void onSubmitButtonClicked() {
-        Toast.makeText(mCityNameActivity.getApplicationContext(), "TEST", Toast.LENGTH_SHORT).show();
+    public void onSubmitButtonClicked(String city) {
+        Toast.makeText(mCityNameActivity.getApplicationContext(), city, Toast.LENGTH_SHORT).show();
     }
 
     @PerController

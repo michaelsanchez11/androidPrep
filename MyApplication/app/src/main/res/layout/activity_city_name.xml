@@ -14,8 +14,7 @@
         android:layout_weight="1"
         android:ems="10"
         android:hint="City Name (Example: 'Salinas')"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/city_name_submit"
