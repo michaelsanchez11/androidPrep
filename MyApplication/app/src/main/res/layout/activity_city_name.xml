@@ -4,15 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.michaelsanchez.testapp.cityName.CityNameActivity"
-    android:baselineAligned="false">
+    android:baselineAligned="false"
+    tools:context="com.example.michaelsanchez.testapp.cityName.CityNameActivity">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:text="Salinas"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="30sp"
-        />
+    <EditText
+        android:id="@+id/city_name_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="City Name (Example: 'Salinas')"
+        android:inputType="textPersonName"
+        android:text="Name" />
 
+    <Button
+        android:id="@+id/city_name_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:text="Submit" />
 </LinearLayout>

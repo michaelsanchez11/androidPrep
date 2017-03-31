@@ -1,11 +1,15 @@
 package com.example.michaelsanchez.testapp.cityName;
 
 import android.util.Log;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.michaelsanchez.testapp.R;
 import com.example.michaelsanchez.testapp.data.weatherData.Weather;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import rx.Subscriber;
 /**
  * Observable pattern for the api call.
@@ -14,10 +18,20 @@ import rx.Subscriber;
 public class CityNameLayout extends Subscriber <Weather> {
 
     private CityNameActivity mCityNameActivity;
+    private CityNameLayoutListener mListener;
 
-    public CityNameLayout(CityNameActivity cityNameActivity) {
+    @BindView(R.id.city_name_button) Button submitButton;
+
+    public CityNameLayout(CityNameActivity cityNameActivity, CityNameLayoutListener listener) {
         mCityNameActivity = cityNameActivity;
+        mListener = listener;
         mCityNameActivity.setContentView(R.layout.activity_city_name);
+        ButterKnife.bind(this, mCityNameActivity);
+    }
+
+    @OnClick(R.id.city_name_button)
+    void onSubmitButtonClicked() {
+        mListener.onSubmitButtonClicked();
     }
 
     @Override
@@ -32,5 +46,9 @@ public class CityNameLayout extends Subscriber <Weather> {
     public void onNext(Weather weather) {
         Toast.makeText(mCityNameActivity.getApplicationContext(), weather.getClouds().toString()
                         ,Toast.LENGTH_SHORT).show();
+    }
+
+    interface CityNameLayoutListener {
+        void onSubmitButtonClicked();
     }
 }
