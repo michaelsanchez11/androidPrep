@@ -20,7 +20,7 @@ public class CityNameLayout extends Subscriber <Weather> {
     private CityNameActivity mCityNameActivity;
     private CityNameLayoutListener mListener;
 
-    @BindView(R.id.city_name_button) Button submitButton;
+    @BindView(R.id.city_name_submit) Button submitButton;
 
     public CityNameLayout(CityNameActivity cityNameActivity, CityNameLayoutListener listener) {
         mCityNameActivity = cityNameActivity;
@@ -29,7 +29,7 @@ public class CityNameLayout extends Subscriber <Weather> {
         ButterKnife.bind(this, mCityNameActivity);
     }
 
-    @OnClick(R.id.city_name_button)
+    @OnClick(R.id.city_name_submit)
     void onSubmitButtonClicked() {
         mListener.onSubmitButtonClicked();
     }

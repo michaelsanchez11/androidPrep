@@ -18,7 +18,7 @@ public class MainLayout {
     private MainActivity mMainActivity;
     private MainLayoutListener mMainLayoutListener;
 
-    @BindView(R.id.city_name_submit)
+    @BindView(R.id.city_name_button)
     Button mCityNameButton;
 
     public MainLayout(MainActivity mainActivity, MainLayoutListener listener) {
@@ -28,7 +28,7 @@ public class MainLayout {
         ButterKnife.bind(this,mainActivity);
     }
 
-    @OnClick(R.id.city_name_submit)
+    @OnClick(R.id.city_name_button)
     void onCityNameButtonClicked(){
         mMainLayoutListener.onCityNameButtonClicked();
     }
